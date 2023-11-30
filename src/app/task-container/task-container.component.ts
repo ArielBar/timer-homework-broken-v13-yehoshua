@@ -10,9 +10,11 @@ import { LogicService } from '../logic.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskContainerComponent implements OnInit {
-  public tasks$: Observable<TaskModel[]>;
-  public totalTime$: Observable<number>;
-  constructor(private service: LogicService) {}
+  tasks$: Observable<TaskModel[]>;
+  totalTime$: Observable<number>;
+
+  constructor(private service: LogicService) {
+  }
 
   ngOnInit() {
     this.tasks$ = this.service.tasks$;

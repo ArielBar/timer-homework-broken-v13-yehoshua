@@ -7,7 +7,9 @@ import { TimerManagerService } from './timer-manager.service';
 })
 export class TaskFactoryService {
   private counter = 0;
-  constructor(private timersService: TimerManagerService) {}
+
+  constructor(private timersService: TimerManagerService) {
+  }
 
   createTask(name: string): TaskModel {
     const task: TaskModel = {
@@ -19,12 +21,15 @@ export class TaskFactoryService {
     this.incrementCounter();
     return task;
   }
+
   public play(id: number) {
     this.timersService.playTimer(id);
   }
+
   public pause(id: number) {
     this.timersService.pauseTimer(id);
   }
+
   private incrementCounter() {
     this.counter += 1;
   }

@@ -4,10 +4,7 @@ import {
   Input,
   Output,
   EventEmitter,
-  ChangeDetectionStrategy,
-  OnChanges,
-  SimpleChanges,
-  ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { TaskModel } from '../models/task-model';
 

@@ -1,6 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Observable, timer, BehaviorSubject } from 'rxjs';
 import { tap, filter } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -11,6 +12,7 @@ export class TimerManagerService {
     subj$: BehaviorSubject<number>;
     isRunning: boolean;
   }[] = [];
+
   constructor(private ngZone: NgZone) {
     this.runTimers(); //FIXME: can be a performance issue
   }
@@ -20,15 +22,18 @@ export class TimerManagerService {
     this.timers.push({ id, subj$: newTimer, isRunning: false });
     return newTimer.asObservable();
   }
+
   private createTimer() {
     return new BehaviorSubject<number>(this.initialValue);
   }
+
   public playTimer(id: number): void {
     const timer = this.timers.find((x) => x.id === id);
     if (timer) {
       timer.isRunning = true;
     }
   }
+
   public pauseTimer(id: number): void {
     const timer = this.timers.find((x) => x.id === id);
     if (timer) {

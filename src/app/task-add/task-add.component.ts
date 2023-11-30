@@ -1,13 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  Validators,
-  FormGroup,
-  AbstractControl,
-} from '@angular/forms';
-import { LogicService } from '../logic.service';
-import { map } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { LogicService } from '../logic.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-task-add',
@@ -16,7 +10,10 @@ import { of } from 'rxjs';
 })
 export class TaskAddComponent implements OnInit {
   form: FormGroup;
-  constructor(private fb: FormBuilder, private service: LogicService) {}
+
+  constructor(private fb: FormBuilder, private service: LogicService) {
+  }
+
   ngOnInit(): void {
     this.form = this.fb.group({
       text: [
@@ -26,10 +23,12 @@ export class TaskAddComponent implements OnInit {
       ],
     });
   }
+
   submitHandler(text: string) {
     this.service.addTask(text);
     this.resetForm();
   }
+
   private resetForm() {
     this.form.reset();
   }

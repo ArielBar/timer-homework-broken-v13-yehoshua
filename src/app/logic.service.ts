@@ -13,10 +13,13 @@ export class LogicService {
   private state: TaskModel[] = [...this.initialState];
   private logicSubj$ = new CloneSubject(this.state);
 
-  constructor(private taskService: TaskFactoryService) {}
+  constructor(private taskService: TaskFactoryService) {
+  }
+
   public get tasks$(): Observable<TaskModel[]> {
     return this.logicSubj$.asObservable();
   }
+
   public addTask(tskName: string) {
     const newTask = this.taskService.createTask(tskName);
     this.state.push(newTask);
@@ -40,9 +43,11 @@ export class LogicService {
     });
     return res.asObservable();
   }
+
   public nameExists(value: string): Observable<boolean> {
     return of(this.state.find((x) => x.name === value) !== undefined);
   }
+
   private toggleAllButtonTexts(
     tasks: TaskModel[],
     selectedId: number
@@ -53,6 +58,7 @@ export class LogicService {
     this.toggleText(tasks[selectedId]);
     return tasks;
   }
+
   private inactivateButtons(tsk: TaskModel): void {
     if (tsk.buttonText === 'pause') {
       this.setPlay(tsk);
@@ -66,6 +72,7 @@ export class LogicService {
       this.setPause(tsk);
     }
   }
+
   private setPlay(tsk: TaskModel) {
     tsk.buttonText = 'play_arrow';
     this.taskService.pause(tsk.id);
