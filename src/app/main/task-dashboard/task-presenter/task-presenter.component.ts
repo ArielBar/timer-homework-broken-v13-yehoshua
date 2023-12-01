@@ -11,7 +11,7 @@ import { TaskModel } from '@shared/models/task-model';
   selector: 'app-task-presenter',
   templateUrl: './task-presenter.component.html',
   styleUrls: ['./task-presenter.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskPresenterComponent {
   @Input() task: TaskModel;

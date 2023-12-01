@@ -1,4 +1,11 @@
 <div class="container">
   <app-task-add></app-task-add>
-  <app-task-container></app-task-container>
+  <app-task-presenter
+    *ngFor="let task of tasks$ | async"
+    [task]="task"
+    (clicked)="onClick($event)">
+  </app-task-presenter>
+  <app-task-total
+    [totalTime]="totalTime$ | async">
+  </app-task-total>
 </div>

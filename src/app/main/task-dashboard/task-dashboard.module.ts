@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { TaskContainerComponent } from "./task-container/task-container.component";
+import { TaskTotalComponent } from "./task-total/task-total.component";
 import { TaskPresenterComponent } from "./task-presenter/task-presenter.component";
 import { TaskAddComponent } from "./task-add/task-add.component";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -13,7 +13,7 @@ import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
-    TaskContainerComponent,
+    TaskTotalComponent,
     TaskPresenterComponent,
     TaskAddComponent,
     TaskDashboardComponent,

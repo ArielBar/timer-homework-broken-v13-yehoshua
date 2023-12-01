@@ -2,13 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Input, Component } from '@angular/core';
 import { TaskModel } from '@shared/models/task-model';
 import { LogicService } from '@shared/services/logic.service';
-import { TaskContainerComponent } from './task-container.component';
+import { TaskTotalComponent } from './task-total.component';
 import { MatCardModule } from '@angular/material/card';
-import { MinuteSecondsPipe } from '@shared/pipes/minute-seconds.pipe';
+import { MinuteSecondsFormatPipe } from '@shared/pipes/minute-seconds-format.pipe';
 import { of } from 'rxjs';
 describe('TaskContainerComponent', () => {
-  let component: TaskContainerComponent;
-  let fixture: ComponentFixture<TaskContainerComponent>;
+  let component: TaskTotalComponent;
+  let fixture: ComponentFixture<TaskTotalComponent>;
 
   @Component({
     selector: 'app-task-presenter',
@@ -32,11 +32,11 @@ describe('TaskContainerComponent', () => {
   beforeEach(() => {
     const taskModelStub = {};
     TestBed.configureTestingModule({
-      declarations: [TaskContainerComponent, FakeComponent, MinuteSecondsPipe],
+      declarations: [TaskTotalComponent, FakeComponent, MinuteSecondsFormatPipe],
       providers: [{ provide: LogicService, useClass: FakeService }],
       imports: [MatCardModule],
     });
-    fixture = TestBed.createComponent(TaskContainerComponent);
+    fixture = TestBed.createComponent(TaskTotalComponent);
     component = fixture.componentInstance;
   });
   it('can load instance', () => {

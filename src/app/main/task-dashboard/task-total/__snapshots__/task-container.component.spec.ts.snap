@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TaskContainerComponent DOM should render tasks$ 1`] = `
+exports[`TaskTotalComponent DOM should render tasks$ 1`] = `
 <div
   id="root3"
 >
@@ -37,7 +37,7 @@ exports[`TaskContainerComponent DOM should render tasks$ 1`] = `
 }
       </p>
     </app-task-presenter>
-    
+
   </mat-card>
   <mat-card
     class="mat-card mat-focus-indicator"
@@ -45,20 +45,20 @@ exports[`TaskContainerComponent DOM should render tasks$ 1`] = `
     <mat-card-title
       class="mat-card-title"
     >
-       Total: 00:01 
+       Total: 00:01
     </mat-card-title>
   </mat-card>
 </div>
 `;
 
-exports[`TaskContainerComponent DOM should render totalTime$ 1`] = `
+exports[`TaskTotalComponent DOM should render totalTime$ 1`] = `
 <div
   id="root2"
 >
   <mat-card
     class="mat-card mat-focus-indicator"
   >
-    
+
   </mat-card>
   <mat-card
     class="mat-card mat-focus-indicator"
@@ -66,7 +66,7 @@ exports[`TaskContainerComponent DOM should render totalTime$ 1`] = `
     <mat-card-title
       class="mat-card-title"
     >
-       Total: 00:35 
+       Total: 00:35
     </mat-card-title>
   </mat-card>
 </div>

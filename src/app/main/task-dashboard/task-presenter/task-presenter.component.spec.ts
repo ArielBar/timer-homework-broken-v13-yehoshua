@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
 import { TaskPresenterComponent } from './task-presenter.component';
 import { Pipe, PipeTransform } from '@angular/core';
 import { of } from 'rxjs';
