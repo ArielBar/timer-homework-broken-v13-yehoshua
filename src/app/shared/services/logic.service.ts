@@ -11,7 +11,7 @@ import { CloneSubject } from './clone-subject';
 export class LogicService {
   readonly initialState: TaskModel[] = [];
   private state: TaskModel[] = [...this.initialState];
-  private logicSubj$ = new CloneSubject(this.state);
+  private logicSubj$ = new BehaviorSubject<TaskModel[]>(this.state)
 
   constructor(private taskService: TaskFactoryService) {
   }
