@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Input, Component } from '@angular/core';
-import { TaskModel } from '../models/task-model';
-import { LogicService } from '../logic.service';
+import { TaskModel } from '@shared/models/task-model';
+import { LogicService } from '@shared/services/logic.service';
 import { TaskContainerComponent } from './task-container.component';
 import { MatCardModule } from '@angular/material/card';
-import { MinuteSecondsPipe } from '../minute-seconds.pipe';
+import { MinuteSecondsPipe } from '@shared/pipes/minute-seconds.pipe';
 import { of } from 'rxjs';
 describe('TaskContainerComponent', () => {
   let component: TaskContainerComponent;

@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TaskModel } from '../models/task-model';
-import { LogicService } from '../logic.service';
+import { TaskModel } from '@shared/models/task-model';
+import { LogicService } from '@shared/services/logic.service';
 
 @Component({
   selector: 'app-task-container',

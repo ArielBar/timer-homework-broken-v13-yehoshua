@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { TaskModel } from './models/task-model';
-import { TimerManagerService } from './timer-manager.service';
+import { TaskModel } from '@shared/models/task-model';
+import { TimerManagerService } from '@shared/services/timer-manager.service';
 
 @Injectable({
   providedIn: 'root',

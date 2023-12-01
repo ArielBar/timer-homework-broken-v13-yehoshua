@@ -6,7 +6,7 @@ import {
   EventEmitter,
   ChangeDetectionStrategy
 } from '@angular/core';
-import { TaskModel } from '../models/task-model';
+import { TaskModel } from '@shared/models/task-model';
 
 @Component({
   selector: 'app-task-presenter',
@@ -17,6 +17,9 @@ import { TaskModel } from '../models/task-model';
 export class TaskPresenterComponent implements OnInit {
   @Input() task: TaskModel;
   @Output() clicked = new EventEmitter<TaskModel>();
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     setTimeout(() => {

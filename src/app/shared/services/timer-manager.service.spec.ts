@@ -1,6 +1,6 @@
-import { TestBed, fakeAsync, tick, flush } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { TimerManagerService } from './timer-manager.service';
-import { merge, concat } from 'rxjs';
+
 describe('TimerManagerService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 

@@ -1,5 +1,5 @@
 import { of } from 'rxjs';
-import { LogicService } from '../logic.service';
+import { LogicService } from '@shared/services/logic.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
 

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { LogicService } from '../logic.service';
+import { LogicService } from '@shared/services/logic.service';
 import { TaskAddComponent } from './task-add.component';
 import { of } from 'rxjs';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { TaskModel } from './models/task-model';
-import { Observable, combineLatest, Subject, of } from 'rxjs';
+import { TaskModel } from '@shared/models/task-model';
+import { Observable, combineLatest, Subject, of, BehaviorSubject } from 'rxjs';
 import { TaskFactoryService } from './task-factory.service';
 import { map } from 'rxjs/operators';
-import { CloneSubject } from './clone-subject';
 
 @Injectable({
   providedIn: 'root',
