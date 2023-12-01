@@ -1,5 +1,5 @@
 <div class="container">
-  <app-task-add></app-task-add>
+  <app-task-add [existingTasksNames]="existingTasksNames$ | async"></app-task-add>
   <app-task-presenter
     *ngFor="let task of tasks$ | async"
     [task]="task"

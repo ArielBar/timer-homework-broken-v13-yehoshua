@@ -1,39 +1,42 @@
-import { of } from 'rxjs';
 import { LogicService } from '@shared/services/logic.service';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
+type ValidatorReturnType = { [key: string]: boolean } | null;
 
 @Component({
   selector: 'app-task-add',
   templateUrl: './task-add.component.html',
   styleUrls: ['./task-add.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskAddComponent implements OnInit {
-  form: FormGroup;
+  @Input() existingTasksNames: string[];
+  taskAddForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private service: LogicService) {
+  constructor(private formBuilder: FormBuilder, private logicService: LogicService) {
   }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      text: [
-        null,
-        Validators.compose([Validators.required, Validators.minLength(2)]),
-        this.validateNameExists.bind(this),
-      ],
+    this.taskAddForm = this.formBuilder.group({
+      taskName: new FormControl('', [
+        Validators.required, Validators.minLength(2), this.validateNameTaken.bind(this)
+      ])
     });
   }
 
-  submitHandler(text: string) {
-    this.service.addTask(text);
-    this.resetForm();
+  onFormSubmit(): void {
+    const taskName = this.taskAddForm?.get('taskName').value.toLowerCase();
+    this.logicService.addTask(taskName);
+    this.taskAddForm.reset();
   }
 
-  private resetForm() {
-    this.form.reset();
-  }
+  validateNameTaken(control: AbstractControl): ValidatorReturnType {
+    if(control.value === null) {
+      return null;
+    }
 
-  validateNameExists(control: AbstractControl) {
-    return of(null);
+    const taskName = control.value.toLowerCase();
+    return this.existingTasksNames.includes(taskName) ? { nameTaken: true } : null;
   }
 }
