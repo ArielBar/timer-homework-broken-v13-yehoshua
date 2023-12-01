@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter,
@@ -14,17 +13,11 @@ import { TaskModel } from '@shared/models/task-model';
   styleUrls: ['./task-presenter.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class TaskPresenterComponent implements OnInit {
+export class TaskPresenterComponent {
   @Input() task: TaskModel;
   @Output() clicked = new EventEmitter<TaskModel>();
 
   constructor() {
-  }
-
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.task.name = this.task.name.toUpperCase();
-    }, 0);
   }
 
   public click() {
