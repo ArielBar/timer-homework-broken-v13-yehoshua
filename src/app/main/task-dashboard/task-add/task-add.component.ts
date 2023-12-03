@@ -1,5 +1,4 @@
-import { LogicService } from '@shared/services/logic.service';
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 type ValidatorReturnType = { [key: string]: boolean } | null;
@@ -11,10 +10,11 @@ type ValidatorReturnType = { [key: string]: boolean } | null;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskAddComponent implements OnInit {
-  @Input() existingTasksNames: string[];
+  @Input() existingTasksNames: string[] = [];
+  @Output() addTaskEvent = new EventEmitter<string>();
   taskAddForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private logicService: LogicService) {
+  constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -25,9 +25,9 @@ export class TaskAddComponent implements OnInit {
     });
   }
 
-  onFormSubmit(): void {
+  addTask(): void {
     const taskName = this.taskAddForm?.get('taskName').value.toLowerCase();
-    this.logicService.addTask(taskName);
+    this.addTaskEvent.emit(taskName);
     this.taskAddForm.reset();
   }
 
