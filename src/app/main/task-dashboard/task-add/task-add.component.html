@@ -1,0 +1,24 @@
+<form [formGroup]="taskAddForm" novalidate (ngSubmit)="addTask()">
+  <mat-card class="add-card">
+    <mat-card-content>
+      <div class="row">
+        <mat-form-field>
+          <input matInput placeholder="Task Name" formControlName="taskName"/>
+          <mat-error *ngIf="taskAddForm.get('taskName')?.hasError('required')">
+            Task name needs to be at least <strong>2 letters.</strong>
+          </mat-error>
+        </mat-form-field>
+        <div *ngIf="taskAddForm.get('taskName')?.hasError('nameTaken')">
+          😢 Oh noes, this task already exists!
+        </div>
+        <button
+          color="primary"
+          mat-raised-button
+          [disabled]="!taskAddForm.valid"
+          type="submit">
+          Add
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>

@@ -1,0 +1,16 @@
+<div class="container">
+  <app-task-add
+    (addTaskEvent)="addTask($event)"
+    [existingTasksNames]="existingTasksNames$ | async">
+  </app-task-add>
+  <mat-card>
+  <app-task-presenter
+    *ngFor="let task of tasks$ | async; trackBy: trackByTask"
+    [task]="task"
+    (toggleTaskEvent)="toggleTask($event)">
+  </app-task-presenter>
+  </mat-card>
+  <app-task-total
+    [totalTime]="totalTime$ | async">
+  </app-task-total>
+</div>

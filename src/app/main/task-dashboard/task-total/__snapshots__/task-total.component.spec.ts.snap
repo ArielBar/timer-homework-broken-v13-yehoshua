@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskContainerComponent DOM should render totalTime$ 1`] = `
+<div
+  id="root1"
+>
+  <mat-card
+    class="mat-card mat-focus-indicator"
+  >
+    <mat-card-title
+      class="mat-card-title"
+    >
+       Total: 20 
+    </mat-card-title>
+  </mat-card>
+</div>
+`;

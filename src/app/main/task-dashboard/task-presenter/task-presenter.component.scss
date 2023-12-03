@@ -1,0 +1,11 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+
+  .task-name {
+    width: 20rem;
+    overflow-x: auto;
+  }
+}
