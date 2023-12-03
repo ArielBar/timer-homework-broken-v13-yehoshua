@@ -1,1 +1,1 @@
-export type buttonText = 'play_arrow' | 'pause';
+export type ButtonText = 'play_arrow' | 'pause';
