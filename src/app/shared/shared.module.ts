@@ -1,12 +1,15 @@
 import { NgModule } from "@angular/core";
-import { MinuteSecondsPipe } from "@shared/pipes/minute-seconds.pipe";
+import { MinuteSecondsFormatPipe } from "@shared/pipes/minute-seconds-format.pipe";
+import { DestroyableComponent } from "@shared/components/destroyable.component";
 
 @NgModule({
   declarations: [
-    MinuteSecondsPipe
+    MinuteSecondsFormatPipe,
+    DestroyableComponent
   ],
   exports: [
-    MinuteSecondsPipe
+    MinuteSecondsFormatPipe,
+    DestroyableComponent
   ]
 })
 export class SharedModule {
