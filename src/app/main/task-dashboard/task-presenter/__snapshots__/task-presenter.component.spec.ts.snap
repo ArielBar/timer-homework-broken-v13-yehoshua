@@ -8,12 +8,12 @@ exports[`TaskPresenterComponent should render task 1`] = `
     class="mat-card mat-focus-indicator row"
   >
     <div
-      class="input-name"
+      class="task-name"
     >
-      some name
+      SOME NAME
     </div>
     <p>
-      10
+      0
     </p>
     <button
       mat-fab=""
