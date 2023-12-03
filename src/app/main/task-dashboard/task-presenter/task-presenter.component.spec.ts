@@ -1,19 +1,21 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TaskPresenterComponent } from './task-presenter.component';
 import { Pipe, PipeTransform } from '@angular/core';
-import { of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+
+@Pipe({ name: 'minuteSecondsFormat' })
+class MockPipe implements PipeTransform {
+  transform(value: number): number {
+    return value;
+  }
+}
 
 describe('TaskPresenterComponent', () => {
   let component: TaskPresenterComponent;
   let fixture: ComponentFixture<TaskPresenterComponent>;
-  @Pipe({ name: 'minuteSeconds' })
-  class MockPipe implements PipeTransform {
-    transform(value: number): number {
-      return value;
-    }
-  }
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TaskPresenterComponent, MockPipe],
@@ -24,24 +26,31 @@ describe('TaskPresenterComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TaskPresenterComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
+
+    component.task = {
+      id: 1,
+      name: 'some name',
+      buttonText: 'pause',
+      timer: { emitter$: new BehaviorSubject<number>(0), isRunning: false }
+    };
+
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should render task', () => {
-    // Arrange
-    component.task = {
-      id: 1,
-      name: 'some name',
-      buttonText: 'pause',
-      timer: of(10),
-    };
-    // Act
-    fixture.detectChanges();
 
-    // Assert
+  it('should render task', () => {
     expect(fixture.nativeElement).toMatchSnapshot();
+  });
+
+  it('should toggle task', () => {
+    const toggleTaskEventSpy = jest.spyOn(component.toggleTaskEvent, 'emit');
+
+    component.toggleTask();
+
+    expect(toggleTaskEventSpy).toHaveBeenCalledTimes(1);
+    expect(toggleTaskEventSpy).toHaveBeenCalledWith(1);
   });
 });
