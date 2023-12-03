@@ -15,12 +15,12 @@ import { TaskModel } from '@shared/models/task-model';
 })
 export class TaskPresenterComponent {
   @Input() task: TaskModel;
-  @Output() clicked = new EventEmitter<TaskModel>();
+  @Output() toggleTaskEvent = new EventEmitter<number>();
 
   constructor() {
   }
 
-  public click() {
-    this.clicked.emit(this.task);
+  toggleTask() {
+    this.toggleTaskEvent.emit(this.task.id);
   }
 }

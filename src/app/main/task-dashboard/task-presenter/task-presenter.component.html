@@ -1,7 +1,7 @@
 <mat-card class="row">
   <div class="task-name">{{ task.name | uppercase }}</div>
-  <p>{{ task.timer | async | minuteSeconds }}</p>
-  <button mat-fab (click)="click()">
+  <p>{{ task.timer.emitter$ | async | minuteSecondsFormat }}</p>
+  <button mat-fab (click)="toggleTask()">
     <mat-icon>{{ task.buttonText }}</mat-icon>
   </button>
 </mat-card>
